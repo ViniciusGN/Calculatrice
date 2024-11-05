@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txt_expressao"
+        android:id="@+id/txt_expression"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="5+5"
@@ -21,5 +21,72 @@
         android:ellipsize="start"
         android:singleLine="true"
     />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="10"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:gravity="end"
+        android:layout_margin="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal"
+
+        <Button
+            android:id="@+id/bt_clear"
+            style="@style/Operators_Button"
+            android:layout_weight="3"
+            android:text="C"
+        />
+
+        <Button
+            android:id="@+id/bt_divide"
+            style="@style/Operators_Button"
+            android:text="/"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal"
+
+        <Button
+        android:id="@+id/number_seven"
+        style="@style/Numbers_Button"
+        android:text="7"
+            />
+
+        <Button
+        android:id="@+id/number_eight"
+        style="@style/Numbers_Button"
+        android:text="8"
+        />
+
+        <Button
+            android:id="@+id/number_nine"
+            style="@style/Numbers_Button"
+            android:text="9"
+        />
+
+        <Button
+            android:id="@+id/bt_multi"
+            style="@style/Operators_Button"
+            android:layout_weight="3"
+            android:text="X"
+        />
+
+    </LinearLayout>
 
 </LinearLayout>
