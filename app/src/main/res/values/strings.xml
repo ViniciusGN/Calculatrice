@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DA-Calculator</string>
+    <string name="backspace_button">Backspace</string>
 </resources>
