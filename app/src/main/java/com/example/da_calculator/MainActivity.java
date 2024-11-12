@@ -12,6 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -61,6 +64,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 txtExpression.setText("");
                 txtResult.setText("");
+            }
+        });
+
+        backspaceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView txtExpression = findViewById(R.id.txt_expression);
+                String string = txtExpression.getText().toString();
+
+                if (!string.isEmpty()){
+                    byte var0 = 0;
+                    int var1 = string.length()-1;
+                    String inside_expression = string.substring(var0,var1);
+                    txtExpression.setText(inside_expression);
+                }
+                txtResult.setText("");
+            }
+        });
+
+        equals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Expression inside_expression = new ExpressionBuilder(txtExpression.getText().toString()).build();
+                    double result = inside_expression.evaluate();
+                    long long_result = (long) result;
+
+                    if (result == (double) long_result) {
+                        txtResult.setText((CharSequence) String.valueOf(long_result));
+                    } else {
+                        txtResult.setText((CharSequence) String.valueOf(result));
+                    }
+                }
+                catch(Exception e) {
+                }
             }
         });
 
@@ -166,11 +204,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_divide:
                 AddOneExpression("/", false);
                 break;
-
-            case R.id.bt_equals:
-                AddOneExpression("=", false);
-                break;
-
         }
     }
 }
