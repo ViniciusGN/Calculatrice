@@ -3,6 +3,15 @@
     <style name="Base.Theme.DACalculator" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/white</item> -->
+        <item name="colorPrimaryVariant">#66CCFB</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Theme.DACalculator" parent="Base.Theme.DACalculator" />
