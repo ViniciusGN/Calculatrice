@@ -1,66 +1,181 @@
 package com.example.da_calculator.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import com.example.da_calculator.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CalculatorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CalculatorFragment extends Fragment {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class CalculatorFragment extends Fragment implements View.OnClickListener {
 
-    public CalculatorFragment() {
-        // Required empty public constructor
-    }
+    private Button numberZero, numberOne, numberTwo,
+            numberThree, numberFour, numberFive,
+            numberSix, numberSeven, numberEight,
+            numberNine, equals,
+            subtraction, clearField,
+            addition, point, multiplication, divide;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CalculatorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CalculatorFragment newInstance(String param1, String param2) {
-        CalculatorFragment fragment = new CalculatorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private ImageButton backspaceButton;
+    private TextView txtExpression, txtResult;
 
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
+
+        // Inicializar componentes
+        IniciateComponents(view);
+
+        // Definir listeners
+        setOnClickListeners();
+
+        return view;
+    }
+
+    private void IniciateComponents(View view) {
+        numberZero = view.findViewById(R.id.number_zero);
+        numberOne = view.findViewById(R.id.number_one);
+        numberTwo = view.findViewById(R.id.number_two);
+        numberThree = view.findViewById(R.id.number_three);
+        numberFour = view.findViewById(R.id.number_four);
+        numberFive = view.findViewById(R.id.number_five);
+        numberSix = view.findViewById(R.id.number_six);
+        numberSeven = view.findViewById(R.id.number_seven);
+        numberEight = view.findViewById(R.id.number_eight);
+        numberNine = view.findViewById(R.id.number_nine);
+        addition = view.findViewById(R.id.bt_sum);
+        subtraction = view.findViewById(R.id.bt_subtraction);
+        multiplication = view.findViewById(R.id.bt_multi);
+        divide = view.findViewById(R.id.bt_divide);
+        point = view.findViewById(R.id.bt_point);
+        equals = view.findViewById(R.id.bt_equals);
+        clearField = view.findViewById(R.id.bt_clear);
+        backspaceButton = view.findViewById(R.id.bt_backspace);
+        txtExpression = view.findViewById(R.id.txt_expression);
+        txtResult = view.findViewById(R.id.txt_result);
+    }
+
+    private void setOnClickListeners() {
+        numberZero.setOnClickListener(this);
+        numberOne.setOnClickListener(this);
+        numberTwo.setOnClickListener(this);
+        numberThree.setOnClickListener(this);
+        numberFour.setOnClickListener(this);
+        numberFive.setOnClickListener(this);
+        numberSix.setOnClickListener(this);
+        numberSeven.setOnClickListener(this);
+        numberEight.setOnClickListener(this);
+        numberNine.setOnClickListener(this);
+        equals.setOnClickListener(this);
+        subtraction.setOnClickListener(this);
+        addition.setOnClickListener(this);
+        point.setOnClickListener(this);
+        multiplication.setOnClickListener(this);
+        divide.setOnClickListener(this);
+
+        clearField.setOnClickListener(v -> {
+            txtExpression.setText("");
+            txtResult.setText("");
+        });
+
+        backspaceButton.setOnClickListener(v -> {
+            String string = txtExpression.getText().toString();
+            if (!string.isEmpty()) {
+                txtExpression.setText(string.substring(0, string.length() - 1));
+            }
+            txtResult.setText("");
+        });
+
+        equals.setOnClickListener(v -> {
+            try {
+                Expression expression = new ExpressionBuilder(txtExpression.getText().toString()).build();
+                double result = expression.evaluate();
+                long longResult = (long) result;
+
+                if (result == (double) longResult) {
+                    txtResult.setText(String.valueOf(longResult));
+                } else {
+                    txtResult.setText(String.valueOf(result));
+                }
+            } catch (Exception e) {
+                txtResult.setText("Error");
+            }
+        });
+    }
+
+    public void AddOneExpression(String value_state, boolean clean_data) {
+        if (txtResult.getText().equals("")) {
+            txtResult.setText("");
+        }
+
+        if (clean_data) {
+            txtResult.setText("");
+            txtExpression.append(value_state);
+        } else {
+            txtExpression.append(txtResult.getText());
+            txtExpression.append(value_state);
+            txtResult.setText("");
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.number_zero:
+                AddOneExpression("0", true);
+                break;
+            case R.id.number_one:
+                AddOneExpression("1", true);
+                break;
+            case R.id.number_two:
+                AddOneExpression("2", true);
+                break;
+            case R.id.number_three:
+                AddOneExpression("3", true);
+                break;
+            case R.id.number_four:
+                AddOneExpression("4", true);
+                break;
+            case R.id.number_five:
+                AddOneExpression("5", true);
+                break;
+            case R.id.number_six:
+                AddOneExpression("6", true);
+                break;
+            case R.id.number_seven:
+                AddOneExpression("7", true);
+                break;
+            case R.id.number_eight:
+                AddOneExpression("8", true);
+                break;
+            case R.id.number_nine:
+                AddOneExpression("9", true);
+                break;
+            case R.id.bt_point:
+                AddOneExpression(".", true);
+                break;
+            case R.id.bt_sum:
+                AddOneExpression("+", false);
+                break;
+            case R.id.bt_subtraction:
+                AddOneExpression("-", false);
+                break;
+            case R.id.bt_multi:
+                AddOneExpression("*", false);
+                break;
+            case R.id.bt_divide:
+                AddOneExpression("/", false);
+                break;
+        }
     }
 }

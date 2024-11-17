@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
     
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -18,203 +19,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph=""/>
-
-    <TextView
-        android:id="@+id/txt_expression"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="5+5"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:gravity="end"
-        android:layout_margin="10dp"
-        android:ellipsize="start"
-        android:singleLine="true"
-    />
-
-    <TextView
-        android:id="@+id/txt_result"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:text="10"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:gravity="end"
-        android:layout_margin="10dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-    />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_clear"
-            style="@style/Operators_Button"
-            android:layout_weight="3"
-            android:text="C" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_divide"
-            style="@style/Operators_Button"
-            android:text="/"
-        />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/number_seven"
-        style="@style/Numbers_Button"
-        android:text="7"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/number_eight"
-        style="@style/Numbers_Button"
-        android:text="8"
-        />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_nine"
-            style="@style/Numbers_Button"
-            android:text="9"
-        />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_multi"
-            style="@style/Operators_Button"
-            android:layout_weight="1"
-            android:text="X"
-        />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_four"
-            style="@style/Numbers_Button"
-            android:text="4"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_five"
-            style="@style/Numbers_Button"
-            android:text="5"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_six"
-            style="@style/Numbers_Button"
-            android:text="6"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_subtraction"
-            style="@style/Operators_Button"
-            android:layout_weight="1"
-            android:text="-"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_one"
-            style="@style/Numbers_Button"
-            android:text="1"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_two"
-            style="@style/Numbers_Button"
-            android:text="2"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_three"
-            style="@style/Numbers_Button"
-            android:text="3"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_sum"
-            style="@style/Operators_Button"
-            android:layout_weight="1"
-            android:text="+"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_point"
-            style="@style/Numbers_Button"
-            android:text="."
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/number_zero"
-            style="@style/Numbers_Button"
-            android:text="0"
-            />
-
-        <ImageButton
-            android:id="@+id/bt_backspace"
-            style="@style/Numbers_Button"
-            android:src="@drawable/backspace"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:adjustViewBounds="false"
-            android:background="@color/light_blue"
-            android:contentDescription="@string/backspace_button"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_equals"
-            android:layout_width="0dp"
-            style="@style/Operators_Button"
-            android:layout_weight="1"
-            android:text="="
-            />
-
-    </LinearLayout>
+        app:navGraph="@navigation/nav_main"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
+        style="@style/Widget.App.BottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/personalized_blue"
         app:labelVisibilityMode="labeled"
-        style="@style/Widget.App.BottomNavigationView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_calculator"
+    app:startDestination="@id/menu_normal_calculator">
+
+    <fragment
+        android:id="@+id/menu_normal_calculator"
+        android:name="com.example.da_calculator.fragments.CalculatorFragment"
+        android:label="CalculatorFragment" />
+    <fragment
+        android:id="@+id/menu_scientific_calculator"
+        android:name="com.example.da_calculator.fragments.ScientificFragment"
+        android:label="ScientificFragment" />
+    <fragment
+        android:id="@+id/menu_rss"
+        android:name="com.example.da_calculator.fragments.RssFragment"
+        android:label="fragment_rss"
+        tools:layout="@layout/fragment_rss" />
+</navigation>
