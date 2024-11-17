@@ -23,6 +23,7 @@ exp4j = { module = "net.objecthunter:exp4j", version.ref = "exp4j" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 

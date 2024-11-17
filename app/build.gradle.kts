@@ -25,12 +25,13 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    viewBinding{
-        enable = true
     }
 }
 
@@ -47,4 +48,19 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.exp4j)
+
+    // RxJava
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:adapter-rxjava:2.9.0")
+    implementation("com.squareup.retrofit2:converter-simplexml:2.3.0")
+
+    //Picasso
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+    //Shimer effect
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.github.omtodkar:ShimmerRecyclerView:v0.4.1")
 }

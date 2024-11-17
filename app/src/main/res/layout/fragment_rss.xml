@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.RssFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- ShimmerRecyclerView -->
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:id="@+id/recycler_rss"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:shimmer_recycler_item_count="10"
+        app:shimmer_recycler_layout="@layout/list_item_shimmer"
+        android:layout_marginBottom="?attr/actionBarSize" />
 
-</FrameLayout>
+    <!-- BottomAppBar -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/off_white"
+        app:fabCradleMargin="10dp"
+        app:fabCradleVerticalOffset="1dp" />
+
+    <!-- FloatingActionButton -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFetch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_refresh_24"
+        android:backgroundTint="@color/off_white"
+        app:layout_anchor="@id/bottom_app_bar"
+        android:contentDescription="Atualizar feed RSS" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

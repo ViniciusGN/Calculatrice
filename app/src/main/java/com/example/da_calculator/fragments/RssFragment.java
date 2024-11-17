@@ -64,3 +64,4 @@ public class RssFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_rss, container, false);
     }
 }
+
