@@ -23,9 +23,8 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             numberSix, numberSeven, numberEight,
             numberNine, equals,
             subtraction, clearField,
-            addition, point, multiplication, divide;
+            addition, point, multiplication, divide, backspaceButton;
 
-    private ImageButton backspaceButton;
     private TextView txtExpression, txtResult;
 
     @Nullable

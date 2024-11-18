@@ -1,67 +1,71 @@
 package com.example.da_calculator.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.example.da_calculator.R;
+import com.example.da_calculator.WebViewActivity;
+import com.example.da_calculator.adapter.MyAdapter;
+import com.example.da_calculator.databinding.FragmentRssBinding;
+import com.example.da_calculator.interfaces.IRecyclerItemClickListener;
+import com.example.da_calculator.viewmodel.MainViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RssFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class RssFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public RssFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RssFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RssFragment newInstance(String param1, String param2) {
-        RssFragment fragment = new RssFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+public class RssFragment extends Fragment implements IRecyclerItemClickListener {
+    private FragmentRssBinding binding;
+    private MainViewModel viewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        initViewModel();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rss, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initBinding();
+        initViews();
+        observeData();
+        return binding.getRoot();
+    }
+
+    private void initBinding() {
+        binding = FragmentRssBinding.inflate(getLayoutInflater());
+    }
+
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+    }
+
+    private void initViews() {
+        binding.recyclerRss.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerRss.setHasFixedSize(true);
+        binding.btnFetch.setOnClickListener(view -> {
+            binding.recyclerRss.showShimmer();
+            viewModel.getRss();
+        });
+    }
+
+    private void observeData() {
+        viewModel.getRss().observe(getViewLifecycleOwner(), rss -> {
+            MyAdapter adapter = new MyAdapter(rss.channel.items, this);
+            binding.recyclerRss.setAdapter(adapter);
+            binding.recyclerRss.hideShimmer();
+        });
+
+        viewModel.getError().observe(getViewLifecycleOwner(), error ->
+                Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void onItemClick(String url) {
+        Intent intent = new Intent(requireContext(), WebViewActivity.class);
+        intent.putExtra("url", url);
+        startActivity(intent);
     }
 }
-
