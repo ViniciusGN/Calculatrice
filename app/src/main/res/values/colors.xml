@@ -11,4 +11,11 @@
     <color name="light_gray">#D3D3D3</color>
     <color name="dark_blue">#0D47A1</color>
     <color name="primary_blue">#1976D2</color>
+    <color name="secondary_yellow">#f6a52b</color>
+    <color name="primary_yellow">#f5a42a</color>
+    <color name="dark_gray">#1e1e1e</color>
+    <color name="primary_gray">#2e3038</color>
+    <color name="secondary_light_gray">#dbdbdb</color>
+    <color name="green_ok">#45a834</color>
+
 </resources>
