@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/off_white"
+        android:backgroundTint="@color/secondary_light_gray"
         app:fabCradleMargin="4dp"
         app:fabCradleVerticalOffset="1dp" />
 
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_refresh_24"
-        android:backgroundTint="@color/off_white"
+        android:backgroundTint="@color/white"
         app:layout_anchor="@id/bottom_app_bar"
         android:contentDescription="Atualizar feed RSS" />
 
