@@ -112,68 +112,67 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         });
     }
 
-    public void AddOneExpression(String value_state, boolean clean_data) {
-        if (txtResult.getText().equals("")) {
+    public void AddOneExpression(String value_state, boolean isOperator) {
+        if (!txtResult.getText().toString().isEmpty()) {
+            txtExpression.setText("");
+            txtExpression.setText(txtResult.getText().toString());
             txtResult.setText("");
         }
 
-        if (clean_data) {
-            txtResult.setText("");
-            txtExpression.append(value_state);
-        } else {
-            txtExpression.append(txtResult.getText());
-            txtExpression.append(value_state);
-            txtResult.setText("");
+        if (isOperator && txtExpression.getText().toString().isEmpty()) {
+            return;
         }
+
+        txtExpression.append(value_state);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.number_zero:
-                AddOneExpression("0", true);
+                AddOneExpression("0", false);
                 break;
             case R.id.number_one:
-                AddOneExpression("1", true);
+                AddOneExpression("1", false);
                 break;
             case R.id.number_two:
-                AddOneExpression("2", true);
+                AddOneExpression("2", false);
                 break;
             case R.id.number_three:
-                AddOneExpression("3", true);
+                AddOneExpression("3", false);
                 break;
             case R.id.number_four:
-                AddOneExpression("4", true);
+                AddOneExpression("4", false);
                 break;
             case R.id.number_five:
-                AddOneExpression("5", true);
+                AddOneExpression("5", false);
                 break;
             case R.id.number_six:
-                AddOneExpression("6", true);
+                AddOneExpression("6", false);
                 break;
             case R.id.number_seven:
-                AddOneExpression("7", true);
+                AddOneExpression("7", false);
                 break;
             case R.id.number_eight:
-                AddOneExpression("8", true);
+                AddOneExpression("8", false);
                 break;
             case R.id.number_nine:
-                AddOneExpression("9", true);
+                AddOneExpression("9", false);
                 break;
             case R.id.bt_point:
-                AddOneExpression(".", true);
+                AddOneExpression(".", false);
                 break;
             case R.id.bt_sum:
-                AddOneExpression("+", false);
+                AddOneExpression("+", true);
                 break;
             case R.id.bt_subtraction:
-                AddOneExpression("-", false);
+                AddOneExpression("-", true);
                 break;
             case R.id.bt_multi:
-                AddOneExpression("*", false);
+                AddOneExpression("*", true);
                 break;
             case R.id.bt_divide:
-                AddOneExpression("/", false);
+                AddOneExpression("/", true);
                 break;
         }
     }

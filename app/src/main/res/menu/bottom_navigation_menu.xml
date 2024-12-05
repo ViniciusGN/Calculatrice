@@ -8,12 +8,6 @@
         android:title="@string/menu_normal_calculator"/>
 
     <item
-        android:id="@+id/menu_scientific_calculator"
-        android:enabled="true"
-        android:icon="@drawable/ic_science"
-        android:title="@string/menu_scientific_calculator"/>
-
-    <item
         android:id="@+id/menu_rss"
         android:enabled="true"
         android:icon="@drawable/ic_rss"

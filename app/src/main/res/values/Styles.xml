@@ -26,5 +26,23 @@
         <item name="android:padding">20dp</item>
     </style>
 
+    <style name="Operators_Button_layout" parent="Container_Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="Numbers_Button_layout" parent="Container_Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:backgroundTint">@color/primary_gray</item>
+        <item name="android:minWidth">10dp</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
 
 </resources>

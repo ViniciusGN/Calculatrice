@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/dark_gray"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_expression"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="end"
+        android:layout_margin="5dp"
+        android:ellipsize="start"
+        android:singleLine="true"
+        />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="end"
+        android:layout_margin="5dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_clear"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="C" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_divide"
+            style="@style/Operators_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondary_yellow"
+            android:text="/"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_seven"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_eight"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_nine"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="9" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_multi"
+            style="@style/Operators_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondary_yellow"
+            android:text="x" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_four"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="4"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_five"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="5"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_six"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="6"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_subtraction"
+            style="@style/Operators_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondary_yellow"
+            android:text="-"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_one"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_two"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="2"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_three"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="3"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_sum"
+            style="@style/Operators_Button_layout"
+            android:backgroundTint="@color/secondary_yellow"
+            android:text="+"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_point"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="."
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/number_zero"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="0"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_backspace"
+            style="@style/Numbers_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="DEL"
+            android:textColor="@color/white"
+            android:contentDescription="@string/backspace_button"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_equals"
+            style="@style/Operators_Button_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondary_yellow"
+            android:text="="
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
