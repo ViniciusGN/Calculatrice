@@ -1,0 +1,38 @@
+default:
+  image: ruby:3.2
+
+variables:
+  # Using a fresh runtime for each build to isolate each runtime from any previous builds.
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  # Variable for the runner at ENSICAEN
+  http_proxy: http://193.49.200.22:3128
+  https_proxy: http://193.49.200.22:3128
+  HTTP_PROXY: http://193.49.200.22:3128
+  HTTPS_PROXY: http://193.49.200.22:3128
+
+before_script:
+  - chmod +x gradlew
+  - mv gradle.properties.ci gradle.properties
+  - apt-get install findutils
+
+stages:
+  - build
+  - deploy
+
+build:
+  tags:
+    - gitlab-runner-ensicaen
+  stage: build
+  script:
+    - echo ignoring for now
+    
+pages:
+  stage: deploy
+  script:
+    - gem install bundler
+    - bundle install
+    - bundle exec jekyll build -d public
+    - cp index.html public/index.html
+  artifacts:
+    paths:
+      - public
