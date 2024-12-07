@@ -1,5 +1,5 @@
 default:
-  image: ruby:3.2
+  image: ruby:3.2-bullseye
 
 variables:
   # Using a fresh runtime for each build to isolate each runtime from any previous builds.
@@ -15,7 +15,6 @@ before_script:
   - chmod +x gradlew
   - chmod 644 gradle.properties.ci
   - mv gradle.properties.ci gradle.properties
-  - apt-get install findutils
 
 stages:
   - build
@@ -32,7 +31,7 @@ pages:
   stage: deploy
   script:
     - gem install bundler
-    - bundle install
+    - bundle install --jobs=1
     - bundle exec jekyll build -d public
     - cp index.html public/index.html
   artifacts:
