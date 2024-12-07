@@ -11,7 +11,9 @@ variables:
   HTTPS_PROXY: http://193.49.200.22:3128
 
 before_script:
+  - ls -la
   - chmod +x gradlew
+  - chmod 644 gradle.properties.ci
   - mv gradle.properties.ci gradle.properties
   - apt-get install findutils
 
