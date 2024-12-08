@@ -7,8 +7,209 @@
     <title>Rapport</title>
 </head>
 <body>
-    <h1>My first web page</h1>
-    <p>My first paragraph</p>
-    <a href="about.html">About</a>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo_ensicaen.png" alt="Logo ENSICAEN">
+        </div>
+
+        <div class="description">
+            <h1>Rapport Développement Mobile</h1>
+            <p>
+                Cette page GitLab présente le rapport de la discipline Développement Mobile, réalisé par l'étudiant 
+                <strong>Vinicius MOREIRA NASCIMENTO</strong>, en deuxième année d’ingénierie informatique à l’ENSICAEN pour 
+                l’année universitaire 2024-2025. Ci-dessous, vous trouverez un tableau récapitulatif des activités menées 
+                par l’étudiant lors du développement du projet.
+            </p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Activité</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Indications de ce qui est fait</td></tr>
+                <tr><td>2</td><td>Principes UX - Joel Marsh</td></tr>
+                <tr><td>3</td><td>Rapport GitLab Pages</td></tr>
+                <tr><td>4</td><td>Vert/Horizontal</td></tr>
+                <tr><td>5</td><td>Ne crash pas</td></tr>
+                <tr><td>6</td><td>Installation sur tel</td></tr>
+                <tr><td>7</td><td>Service/Thread</td></tr>
+                <tr><td>8</td><td>Javascript Engine ou équivalent</td></tr>
+                <tr><td>9</td><td>Volley / Picasso</td></tr>
+                <tr><td>10</td><td>SAX ou DOM / Ou JSON - REST</td></tr>
+                <tr><td>11</td><td>ROOM</td></tr>
+                <tr><td>12</td><td>Collaboration</td></tr>
+                <tr><td>13</td><td>Recherches personnelles</td></tr>
+                <tr><td>14</td><td>MVVM*</td></tr>
+                <tr><td>15</td><td>Qualité de rapport*</td></tr>
+                <tr><td>16</td><td>Critique travail</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Section détail -->
+        <div class="details">
+            <h2>1. Keeping the design simple</h2>
+            <p>
+                Dans le projet de la calculatrice mobile, en s'inspirant des idées de Joel Marsh dans "UX Design Principles", 
+                l'interface applique des concepts clés :
+                <ul>
+                    <li><strong>Clarté visuelle et hiérarchie :</strong> Les boutons sont espacés et regroupés par fonction, 
+                        avec une distinction visuelle des actions principales en jaune.</li>
+                    <li><strong>Simplicité fonctionnelle :</strong> Les actions essentielles (addition, soustraction, etc.) 
+                        sont accessibles en un clic, réduisant la charge cognitive.</li>
+                    <li><strong>Accessibilité :</strong> La taille des boutons permet une utilisation intuitive et sans 
+                        erreurs, même sur un écran tactile.</li>
+                </ul>
+                Référence : Marsh, Joel. <em>UX Design Principles: Improve Your User Experience Design Fast</em>. O'Reilly Media.
+            </p>
+        </div>
+        <div class="section">
+            <h2>2. GitLab Pages et Rapport</h2>
+            <p>
+                Ce rapport est hébergé sur une GitLab Pages au sein du projet GitLab institutionnel de l’ENSICAEN.
+            </p>
+        </div>
+        <div class="section">
+            <h2>3. Vertical/Horizontal</h2>
+            <p>
+                Le projet a été développé à la fois en mode vertical et horizontal pour les deux applications, comme présenté lors 
+                d'une séance spécifique avec l'enseignant. Cependant, lors du passage au mode horizontal, le design de la calculatrice 
+                n'a pas préservé le contexte, ce qui a été identifié comme une erreur majeure.
+            </p>
+        </div>
+        <div class="section">
+            <h2>4. Robustesse et gestion des erreurs</h2>
+            <p>
+                Comme démontré lors de la séance, l'application gère les erreurs dans les expressions grâce à un mécanisme de 
+                <code>catch</code>, empêchant les calculs incorrects et la propagation des erreurs dans les opérations suivantes. 
+                L'application ne crash pas et fonctionne parfaitement, malgré une perte de contexte lors du basculement entre 
+                les modes horizontal et vertical.
+            </p>
+        </div>
+        <div class="section">
+            <h2>5. Déploiement mobile</h2>
+            <p>
+            Comme démontré lors de la séance, l'application a été installée sur le téléphone de l'étudiant développeur, 
+            avec l'ajout d'une icône et d'un nom personnalisés.
+            </p>
+        </div>
+        <div class="section">
+            <h2>6. Gestion des ressources via des threads</h2>
+            <p>
+                Dans le fichier <code>MainRepository.java</code>, l’application utilise <code>RxJava</code> pour consommer des flux RSS 
+                via une API externe.
+                Les données sont récupérées en arrière-plan grâce à <code>Schedulers.newThread()</code> et affichées sur l’interface
+                utilisateur avec <code>AndroidSchedulers.mainThread()</code>. Ce processus garantit une expérience fluide en évitant de
+                bloquer la thread principale, tout en gérant les requêtes de manière asynchrone et efficace.
+            </p>
+        </div>
+        <div class="section">
+            <h2>7. Utilisation du moteur JavaScript</h2>
+            <p>
+                Dans le fichier <code>WebViewActivity.java</code>, le moteur JavaScript intégré d'Android a été activé pour permettre 
+                l'exécution de scripts dans la WebView. Cela a été réalisé avec la ligne <code>setJavaScriptEnabled(true)</code>, 
+                complétée par <code>setDomStorageEnabled(true)</code> pour gérer le stockage local des données DOM.
+                Cette fonctionnalité 
+                a été utilisée pour rendre des pages web interactives et garantir le bon fonctionnement des éléments dynamiques, 
+                nécessaires au projet.
+            </p>
+        </div>
+        <div class="section">
+            <h2>8. Utilisation de Retrofit et Picasso</h2>
+            <p>
+                <code>Retrofit</code> (Employé à la place de Volley) a été utilisé pour gérer les requêtes réseau vers l'API RSS,
+                 offrant une intégration fluide 
+                avec <code>RxJava</code> pour récupérer les données de manière asynchrone. <code>Picasso</code>
+                a servi à charger les images des articles dans 
+                la liste avec Shimmer.
+            </p>
+        </div>
+        <div class="section">
+            <h2>9. Utilisation de DOM</h2>
+            <p>
+                La bibliothèque <code>Retrofit</code> avec le convertisseur <code>SimpleXML</code> a été utilisée pour analyser
+                les flux RSS en format XML, 
+                en exploitant le mode DOM pour manipuler les données structurées. De plus, la ligne 
+                <code>binding.webView.getSettings().setDomStorageEnabled(true)</code> dans la WebView active le stockage DOM, 
+                permettant la gestion des données locales comme 
+                <code>localStorage</code> et <code>sessionStorage</code>.
+            </p>
+        </div>
+        <div class="section">
+            <h2>10. ROOM</h2>
+            <p>
+                (À compléter selon les détails spécifiques du projet concernant l'utilisation de ROOM).
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>11. Collaboration</h2>
+            <p>
+                Dans le cadre de l'activité de collaboration, les étudiants brésiliens ont échangé des informations et se sont 
+                entraidés pendant 
+                le développement du projet. Raquel Maciel m'a aidé avec le déploiement sur GitLab Pages et l'installation de 
+                l'application sur mon téléphone. 
+                Luciana Adriao m'a apporté son soutien sur les principes de design, la mise en page et l'adaptation à l'horizontalité. 
+                De mon côté, j'ai aidé les deux dans le développement de l'intégration RSS dans leur code, bien qu'elles aient choisi 
+                d'implémenter 
+                des approches différentes, et j'ai également assisté Raquel dans l'utilisation du menu "sandwich", similaire à ma barre
+                 de navigation implémentée.
+            </p>
+        </div>
+        <div class="section">
+            <h2>12. Recherches personnelles</h2>
+            <p>
+                Dans le cadre des recherches personnelles, plusieurs décisions techniques ont été prises pour améliorer le projet. 
+                Une <code>NavigatorBar</code> a été intégrée en bas de l’application pour naviguer entre les différentes sections, ]
+                et les deux applications ont été encapsulées dans des Fragments.
+                <br><br>
+                De plus, une approche différente a été adoptée pour afficher les données RSS. Une liste avec un effet Shimmer a été 
+                utilisée pour présenter les actualités obtenues à partir d’une requête fournissant des informations sur les 
+                crypto-monnaies. 
+                Pour améliorer l’expérience utilisateur, un bouton de refresh a été ajouté pour mettre à jour la liste 
+                avec une nouvelle requête. Bien que ce bouton ait posé des problèmes de superposition, il a été placé au-dessus de la 
+                <code>NavigatorBar</code> pour garantir son accessibilité. Ces choix reflètent un équilibre entre 
+                innovation et adaptation aux contraintes du projet.
+            </p>
+        </div>
+        <div class="section">
+            <h2>13. MVVM</h2>
+            <p>
+                L’utilisation de l’architecture <code>MVVM</code> a été partiellement appliquée, limitée uniquement à l’application RSS.
+            </p>
+        </div>
+        <div class="section">
+            <h2>14. Critique travail</h2>
+            <p>
+                Les points critiques du projet incluent :
+            </p>
+            <h3>14.1 Projet Calculatrice :</h3>
+            <ul>
+                <li>Absence d’implémentation de MVVM.</li>
+                <li>Problèmes de capture du contexte en mode horizontal.</li>
+                <li>Manque de fonctionnalités avancées pour enrichir l’application.</li>
+            </ul>
+            <h3>14.2 Projet RSS :</h3>
+            <ul>
+                <li>Problème de superposition entre le bouton de refresh et la NavigatorBar, altérant le design, 
+                    bien que la fonctionnalité ait été maintenue.</li>
+            </ul>
+            <p>
+                En revanche, le projet a permis l’intégration de concepts interconnectés issus de diverses disciplines 
+                du cours, offrant d’excellentes opportunités d’apprentissage. Cela inclut l’exploration de nouvelles approches, 
+                comme la substitution de   <code>Volley</code> par <code>Retrofit</code>, l’utilisation de la 
+                <code>NavigatorBar</code> et l’adoption de nouvelles sources RSS. La possibilité d'exécution des tâches 
+                différentes a permis à chaque étudiant de se concentrer sur ses points forts, rendant le projet plus dynamique.
+            </p>
+            <p>
+                Cependant, l’extension du périmètre du projet a compliqué l’approfondissement dans des domaines, par exemple, pour moi, 
+                l’analyse des CVE et les tests, éléments essentiels mais peu exploités dans ce travail.
+            </p>
+        </div>
+    </div>
 </body>
+
 </html>
