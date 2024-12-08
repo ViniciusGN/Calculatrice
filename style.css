@@ -84,17 +84,3 @@ table th, table td {
     border: 1px solid #003147;
     padding: 10px;
 }
-
-table th {
-    background-color: #003147;
-    color: white;
-    font-weight: 600;
-}
-
-table caption {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #003147;
-    text-align: center;
-}
